@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <link rel="icon" href="data:,">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}">
+</head>
+<body>
+    <h1 id="Header">Tweet Data</h1>
+    <h2>Please enter a valid handle below</h2><br>
+    
+    <form id="searchBar">
+         Name: <input type="text" id="handleType" value="@username">
+        <br></br>
+        <input type="button" id="search" value="Search" onclick="passHandle()" class="button">
+        <input type="button" id="sortFavs" value="Sort by Favorites" onclick="FavButton()" class="button is-danger">
+        <input type="button" id="sortRetweets" value="Sort by Retweets" onclick="passHandle()" class="button is-info">
+        <input type="button" id="sortDates" value="Sort by Date" onclick="passHandle()" class="button is-success">
+    </form>
+
+    <div id="Waiting">Waiting for results to load... This may take several minutes</div>
+    <div id="nameSpace" style="display:none;"> Tweets for
+        <a id="name"></a>
+    </div>
+    <br></br>
+    <ul id="usersTweets"></ul>
+    <div class="id-container"></div>
+    <form id="requestMore">
+        <input type="button" id="sortDates" value="See 20 More" onclick="convertToTemplate()" class="button is-success">
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/gh/janl/mustache.js/mustache.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/ClientSide.js') }}"></script>
+    <script>
+            $("#searchBar").submit(function() {
+            passHandle();
+            return false;
+            });
+            var wait=document.getElementById("Waiting");    
+            wait.style.display="none";
+    </script>
+</body>
+
+</html>

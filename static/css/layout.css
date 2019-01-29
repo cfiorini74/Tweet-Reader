@@ -1,0 +1,33 @@
+h1{
+    font: Arial;
+    font-size: 22px;
+}
+
+header { 
+  padding: .5vw;
+  font-size: 0;
+  display: -ms-flexbox;
+  -ms-flex-wrap: wrap;
+  -ms-flex-direction: column;
+  -webkit-flex-flow: row wrap; 
+  flex-flow: row wrap; 
+  display: -webkit-box;
+  display: flex;
+}
+header div { 
+  -webkit-box-flex: auto;
+  -ms-flex: auto;
+  flex:auto;
+  height: 200px;
+  margin: .5vw; 
+}
+header div a img { 
+  width: auto; 
+  height: 100%; 
+  
+}
+@media screen and (max-width: 400px) {
+  header div { margin: 0; }
+  header { padding: 0; }
+  
+}
