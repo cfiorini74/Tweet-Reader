@@ -1,5 +1,5 @@
 import tweepy
-from ReadTweets import ReadTweets
+from ReadTweets import process_tweets_no_rt, process_tweets_w_rt
 import sys
 from tweepy import OAuthHandler
 from tweepy import Stream
@@ -36,29 +36,9 @@ def read():
     except tweepy.TweepError:
         results={"author":"INVALID_USERNAME"}
         return jsonify(results)
-    do = ReadTweets(api, user)
-    results=do.process_tweets_no_rt(user=user,count=data.get('count'),max=data.get('max'))
+    results=process_tweets_no_rt(api,user)
 
     return jsonify(results)
-
-@app.route("/read_more",methods=['GET','POST'])
-def read_more():
-    data = request.get_json()
-    if data is None:
-        return None
-    user=''
-    user = data.get('user')
-    print("String is " +user, file=sys.stderr)
-    try:
-        profile = api.get_user(screen_name=user)
-    except tweepy.TweepError:
-        results={"author":"INVALID_USERNAME"}
-        return jsonify(results)
-    do = ReadTweets(api, user)
-    results=do.process_tweets_no_rt(user=user,count=data.get('count'),max=data.get('max'))
-    return jsonify(results)
-
-
 
 @app.context_processor
 def override_url_for():

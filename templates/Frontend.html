@@ -6,11 +6,11 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/layout.css')}}">
 </head>
 <body>
-    <h1 id="Header">Tweet Data</h1>
+    <h1 id="Header">Tweet Reader</h1>
     <h2>Please enter a valid handle below</h2><br>
     
     <form id="searchBar">
-         Name: <input type="text" id="handleType" value="@username">
+         Name: @<input type="text" id="handleType" value="username">
         <br></br>
         <input type="button" id="search" value="Search" onclick="passHandle()" class="button">
         <input type="button" id="sortFavs" value="Sort by Favorites" onclick="FavButton()" class="button is-danger">
